@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Comunidad del Python - Nivel 4</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body style="background-image: url('img/fondo4.png'); background-size: cover;">
+  <div class="contenedor">
+    <section class="historia">
+      <h1>La Comunidad del Python Nivel 4</h1>
+      <p>
+        En la Montaña de los Cálculos, debés usar tus habilidades para calcular el área de un triángulo.<br>
+        Usá las variables para guardar la base y la altura, y luego calculá el área.
+      </p>
+    </section>
+
+    <section class="desafio" id="desafio">
+      <h2>Desafío: Calcular área de un triángulo</h2>
+      <p>Se tienen las siguientes variables:</p>
+      <pre>
+        base = 10
+        altura = 5
+      </pre>
+      <p>Creá la variable area que almacene el resultado del cálculo del area del triángulo.</p>
+      <textarea id="codigoUsuario1" rows="3"></textarea><br>
+      <button onclick="validarDesafio()">Validar Desafío</button>
+      <p id="feedback1" style="font-weight:bold;"></p>
+    </section>
+
+    <section id="finalizar" class="oculto">
+      <a href="nivel4.html" class="boton-siguiente">Ir a nivel 4 </a>
+    </section>
+  </div>
+
+  <script>
+    function validarDesafio() {
+      const codigo = document.getElementById("codigoUsuario1").value.trim().replace(/\r/g, "");
+      const feedback1 = document.getElementById("feedback1");
+      const finalizar = document.getElementById("finalizar");
+
+      // Acepta con o sin espacios y con paréntesis o sin paréntesis, pero exacto en orden y nombres
+      const regexes = [
+        /^area\s*=\s*\(base\s*\*\s*altura\)\s*\/\s*2$/i,
+        /^area\s*=\s*base\s*\*\s*altura\s*\/\s*2$/i,
+        /^area\s*=\s*base\s*\*\s*altura\/2$/i,
+        /^area\s*=\s*\(base\*altura\)\/2$/i
+      ];
+
+      const valido = regexes.some(r => r.test(codigo.replace(/\s+/g, '')));
+
+      if (valido) {
+        feedback1.style.color = "green";
+        feedback1.textContent = "¡Muy bien! Calculaste correctamente el área del triángulo.";
+        finalizar.classList.remove("oculto");
+      } else {
+        feedback1.style.color = "crimson";
+        feedback1.textContent = 'Código incorrecto. Usá: area = (base * altura) / 2';
+      }
+    }
+  </script>
+  <footer>
+  <p>
+    Este recurso está licenciado bajo una 
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">
+      Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)
+    </a>.
+  </p>
+  <p>
+    <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+      <img alt="Licencia Creative Commons" style="border-width:0" 
+           src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" />
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>

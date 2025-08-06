@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Comunidad del Python - Nivel 2</title>
+  <!-- Enlace al archivo de estilos -->
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+
+<!-- Fondo del nivel 2 -->
+<body style="background-image: url('img/fondo2.png'); background-size: cover;">
+  <div class="contenedor">
+
+    <!-- Título y narrativa del nivel -->
+    <h1>La Comunidad del Python - Nivel 2</h1>
+    <p>
+      Has llegado al Campamento de Tipos de Datos. Aquí los aprendices aprenden a guardar diferentes tipos de información en variables.
+    </p>
+
+    <!-- Explicación teórica -->
+    <h2>Tipos de datos en Python</h2>
+    <p>Podés guardar distintos tipos de datos en variables. Algunos ejemplos:</p>
+    <ul>
+      <li>string: texto entre comillas (ej:"Hola")</li>
+      <li>int: números enteros (ej: 25)</li>
+      <li>float: números con decimales (ej: 3.14)</li>
+      <li>char: en Python es un string de un solo carácter (ej: 'A')</li>
+    </ul>
+
+    <!-- Ejemplo en código Python -->
+    <pre>
+nombre = "Juan"
+edad = 27
+temperatura = 36.6
+inicial = 'J'
+    </pre>
+
+    <!-- Desafío del nivel -->
+    <h2>Tu desafío</h2>
+    <p>
+      Escribí las siguientes variables con los valores correctos y el tipo adecuado:<br>
+      - nombre: tu nombre (string)<br>
+      - edad: tu edad (int)<br>
+      - temperatura: temperatura corporal promedio (float)<br>
+      - inicial: la primera letra de tu nombre (carácter)
+    </p>
+
+    <!-- Área para que el usuario escriba código -->
+    <textarea id="codigoUsuario" rows="6"></textarea><br>
+
+    <!-- Botón para validar -->
+    <button onclick="validarCodigo()">Validar variables</button>
+    <p id="feedback" style="font-weight:bold;"></p>
+
+    <!-- Enlace al siguiente nivel -->
+    <div id="avanzar" class="oculto">
+      <a href="nivel3.html" class="boton-siguiente">Avanzar al Nivel 3</a>
+    </div>
+  </div>
+
+  <!-- Script de validación -->
+  <script>
+    function validarCodigo() {
+      const codigo = document.getElementById("codigoUsuario").value.trim();
+      const feedback = document.getElementById("feedback");
+      const avanzar = document.getElementById("avanzar");
+
+      // Verificaciones usando expresiones regulares:
+      const nombreOk = /nombre\s*=\s*(['"]).+?\1/.test(codigo); // string entre comillas
+      const edadOk = /edad\s*=\s*\d+/.test(codigo); // número entero
+      const tempOk = /temperatura\s*=\s*\d+\.\d+/.test(codigo); // decimal
+      const inicialOk = /inicial\s*=\s*(['"]).{1}\1/.test(codigo); // string de un solo carácter
+
+      if (nombreOk && edadOk && tempOk && inicialOk) {
+        // Si todo está bien, mostrar mensaje positivo y permitir avanzar
+        feedback.style.color = "green";
+        feedback.textContent = "¡Buen trabajo! Has definido variables con distintos tipos de datos correctamente.";
+        avanzar.classList.remove("oculto");
+      } else {
+        // Si hay errores, mostrar advertencia
+        feedback.style.color = "crimson";
+        feedback.textContent = "Revisá que todas las variables estén bien escritas y con el tipo correcto.";
+        avanzar.classList.add("oculto");
+      }
+    }
+  </script>
+  <footer>
+  <p>
+    Este recurso está licenciado bajo una 
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">
+      Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)
+    </a>.
+  </p>
+  <p>
+    <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+      <img alt="Licencia Creative Commons" style="border-width:0" 
+           src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" />
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>

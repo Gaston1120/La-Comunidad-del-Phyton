@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Comunidad del Python - Nivel 1</title>
+  <!-- Enlace al archivo de estilos externo -->
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+
+<!-- Fondo con imagen del Bosque de Identidades -->
+<body style="background-image: url('img/fondo1.png'); background-size: cover;">
+  <div class="contenedor">
+
+    <!-- Título y narrativa introductoria -->
+    <h1>La Comunidad del Python - Nivel 1</h1>
+    <p>
+      Te despertás en el Bosque de Identidades, donde los aprendices inscriben su primer conjuro:  
+      <em>el nombre mágico que los acompañará en su travesía.</em><br>
+      Para comenzar tu viaje, debés guardar tu nombre en una variable.
+    </p>
+
+    <!-- Primer desafío: ingresar nombre -->
+    <p>Escribe tu nombre:</p>
+    <input type="text" id="nombreInput" placeholder="Tu nombre" autocomplete="off">
+    <button onclick="validarNombre()">Forjar nombre</button>
+    <p id="feedback"></p>
+
+    <!-- código generado en Python -->
+    <pre id="codigoPython" class="oculto"></pre>
+
+    <!-- Segundo desafío: crear una variable con el nombre de un compañero -->
+    <div id="ejercicio" class="oculto">
+      <p>
+        Ahora invocá a tu compañero de viaje con una variable llamada "nombre_companiero".<br>
+        Escribí el código en este formato: <br>
+        nombre_companiero = "Juan"
+      </p>
+      <textarea id="codigoUsuario" rows="2" placeholder='Escribí tu código aquí'></textarea><br>
+      <button onclick="validarCodigo()">Validar</button>
+      <p id="feedbackEjercicio"></p>
+    </div>
+
+    <!-- Botón para pasar al siguiente nivel -->
+    <div id="avanzar" class="oculto">
+      <a href="nivel2.html" class="boton-siguiente">Avanzar al Nivel 2</a>
+    </div>
+  </div>
+
+  <!-- Script con funciones de validación -->
+  <script>
+    // Función que valida el nombre ingresado por el usuario
+    function validarNombre() {
+      const nombre = document.getElementById("nombreInput").value.trim(); // Obtener el valor ingresado
+      const feedback = document.getElementById("feedback"); // Elemento para mostrar mensajes
+      const codigo = document.getElementById("codigoPython"); // Área para mostrar el código Python
+      const ejercicio = document.getElementById("ejercicio"); // Sección del segundo desafío
+
+        feedback.style.color = "green";
+        feedback.textContent = "Nombre aceptado.";
+
+        // Mostrar el código Python con el nombre ingresado
+        codigo.textContent = `nombre_aprendiz = "${nombre}"`;
+        codigo.classList.remove("oculto");
+        ejercicio.classList.remove("oculto"); // Mostrar el segundo desafío
+     
+    }
+    
+
+    // Función que valida el código ingresado por el usuario en el segundo desafío
+    function validarCodigo() {
+      const codigo = document.getElementById("codigoUsuario").value.trim(); // Código escrito por el usuario
+      const feedbackEjercicio = document.getElementById("feedbackEjercicio"); // Mensaje de validación
+      const avanzar = document.getElementById("avanzar"); // Enlace para avanzar al siguiente nivel
+
+      // Patrón que valida: nombre_companiero = "texto de al menos 2 caracteres"
+      const patron = /^nombre_companiero\s*=\s*["'][^"']{2,}["']$/;
+
+      if (patron.test(codigo)) {
+        // Si el formato es correcto
+        feedbackEjercicio.style.color = "green";
+        feedbackEjercicio.textContent = "¡Correcto!";
+        avanzar.classList.remove("oculto"); // Mostrar el botón para avanzar
+      } else {
+        // Si hay un error en el código ingresado
+        feedbackEjercicio.style.color = "crimson";
+        feedbackEjercicio.textContent = 'Usá el formato: nombre_companiero = "Nombre"';
+        avanzar.classList.add("oculto");
+      }
+    }
+  </script>
+  <footer>
+  <p>
+    Este recurso está licenciado bajo una 
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">
+      Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)
+    </a>.
+  </p>
+  <p>
+    <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+      <img alt="Licencia Creative Commons" style="border-width:0" 
+           src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" />
+    </a>
+  </p>
+</footer>
+
+
+</body>
+
+</html>

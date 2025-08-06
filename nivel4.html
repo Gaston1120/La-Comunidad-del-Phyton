@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>La Comunidad del Python - Nivel 4</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body style="background-image: url('img/fondo4.png'); background-size: cover;">
+  <div class="contenedor">
+    <!-- Introducción -->
+    <section class="historia">
+      <h1>La Comunidad del Python – Nivel 4</h1>
+      <p>
+        Has llegado al Valle de la Energía, donde los sabios calculan cada paso antes de actuar.<br>
+        Aquí vas a registrar datos personales y administrar tu energía para seguir avanzando.<br>
+        Luego, diseñarás un escudo de defensa calculando su área.
+      </p>
+    </section>
+
+    <!-- Desafío 1 -->
+    <section class="desafio" id="desafio1">
+      <h2> Desafío 1: Datos y energía</h2>
+      <p>
+        Imaginá que vas a iniciar una misión en una tierra lejana. Para ello, necesitás registrar algunos datos y calcular cuánta energía te queda disponible después de prepararte.<br><br>
+        Declararás las siguientes variables:
+      </p>
+      <ul>
+        <li>nombre: tu nombre de aventurero/a (tipo texto)</li>
+        <li>edad: tu edad (número entero)</li>
+        <li>energia_total: la energía inicial con la que contás (número)</li>
+        <li>energia_usada: energía que usaste para equiparte (número)</li>
+        <li>inicial: la primera letra de tu nombre</li>
+        <li>energia_restante: la energía que te queda restando la energía usada a la energía total</li>
+      </ul>
+      <p>Escribí todo en código Python en el siguiente espacio:</p>
+      <textarea id="codigoUsuario1" rows="8"></textarea><br>
+      <button onclick="validarDesafio1()">Validar Desafío 1</button>
+      <p id="feedback1" style="font-weight:bold;"></p>
+    </section>
+
+    <!-- Desafío 2 -->
+    <section class="desafio oculto" id="desafio2">
+      <h2>Desafío 2: Área del escudo</h2>
+      <p>
+        Para protegerte en la travesía, necesitás fabricar un escudo cuadrado.<br>
+        El escudo tiene lados iguales de 5 unidades.<br><br>
+        Definí:
+      </p>
+      <ul>
+        <li>la variable lado(con valor 5)</li>
+        <li>la variable area_escudo (que debe ser igual a lado * lado)</li>
+      </ul>
+      <p>Escribí tu código Python acá:</p>
+      <textarea id="codigoUsuario2" rows="4"></textarea><br>
+      <button onclick="validarDesafio2()">Validar Desafío 2</button>
+      <p id="feedback2" style="font-weight:bold;"></p>
+    </section>
+
+    <!-- Botón para finalizar -->
+    <section id="finalizar" class="oculto">
+      <button onclick="window.location.href='fin.html'">Finalizar aventura</button>
+    </section>
+
+  </div>
+
+  <script>
+    // Función que valida el primer desafío
+    function validarDesafio1() {
+      const codigo = document.getElementById("codigoUsuario1").value.trim();
+      const feedback1 = document.getElementById("feedback1");
+      const desafio2 = document.getElementById("desafio2");
+
+      const nombreOk = /nombre\s*=\s*(['"]).+?\1/.test(codigo);
+      const edadOk = /edad\s*=\s*\d+/.test(codigo);
+      const energiaTotalOk = /energia_total\s*=\s*\d+/.test(codigo);
+      const energiaUsadaOk = /energia_usada\s*=\s*\d+/.test(codigo);
+      const inicialOk = /inicial\s*=\s*(['"]).{1}\1/.test(codigo);
+      const energiaRestanteOk = /energia_restante\s*=\s*energia_total\s*-\s*energia_usada/.test(codigo);
+
+      if (nombreOk && edadOk && energiaTotalOk && energiaUsadaOk && inicialOk && energiaRestanteOk) {
+        feedback1.style.color = "green";
+        feedback1.textContent = "Primer desafío completado.";
+        desafio2.classList.remove("oculto");
+      } else {
+        feedback1.style.color = "crimson";
+        feedback1.textContent = "Revisa que declares todas las variables y hagas el cálculo correcto.";
+      }
+    }
+
+    // Función que valida el segundo desafío
+    function validarDesafio2() {
+      const codigo = document.getElementById("codigoUsuario2").value.trim();
+      const feedback2 = document.getElementById("feedback2");
+      const finalizar = document.getElementById("finalizar");
+
+      const ladoOk = /lado\s*=\s*5/.test(codigo);
+      const areaOk = /area_escudo\s*=\s*lado\s*\*\s*lado/.test(codigo);
+
+      if (ladoOk && areaOk) {
+        feedback2.style.color = "green";
+        feedback2.textContent = "¡Perfecto! Área del escudo calculada.";
+        finalizar.classList.remove("oculto");
+      } else {
+        feedback2.style.color = "crimson";
+        feedback2.textContent = "Código incorrecto. Definí 'lado = 5' y 'area_escudo = lado * lado'.";
+      }
+    }
+  </script>
+  <footer>
+  <p>
+    Este recurso está licenciado bajo una 
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">
+      Licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)
+    </a>.
+  </p>
+  <p>
+    <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+      <img alt="Licencia Creative Commons" style="border-width:0" 
+           src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" />
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>

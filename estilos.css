@@ -1,0 +1,149 @@
+/* Fuente y color general para todo el sitio */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif; /* Fuente con estilo clásico */
+  color: #2c3e50; /* Color oscuro para el texto */
+
+  /* Imagen de fondo (cada nivel puede sobreescribirla en el HTML) */
+  background-image: url('img/fondo1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #222; /* Fondo oscuro por si no carga la imagen */
+
+  /* Flex vertical para alinear contenido y footer */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenedor {
+  max-width: 600px;
+  margin: auto; /* Centra horizontalmente en pantallas anchas */
+  padding: 1rem 2rem;
+  font-family: 'Georgia', serif;
+  background-color: rgba(240, 240, 232, 0.85); /* fondo claro semitransparente */
+  border-radius: 10px;
+  color: #2c3e50;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+
+  flex-grow: 1; /* Ocupa espacio disponible para empujar el footer */
+}
+
+/* Títulos principales del nivel */
+.historia h1 {
+  font-size: 2em;
+  margin-bottom: 0.3em;
+  color: #ffd700; /* Dorado para título épico */
+  text-shadow: 2px 2px 4px #000; /* Sombra para resaltar */
+}
+
+/* Texto de narrativa */
+.historia p {
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+/* Títulos de cada desafío */
+.desafio h2,
+#ejercicio h2,
+#explicacion h3 {
+  color: #1505f0; /* Azul llamativo */
+  margin-top: 1em;
+}
+
+/* Entrada de texto (string o números) y área de código */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 0.5rem 10px;
+  margin-top: 0.5rem;
+  background-color: #ffffffcc; /* Blanco con transparencia */
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+/* Botones generales */
+button,
+.boton-siguiente {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón de acción principal */
+button {
+  background-color: #3b5998; /* Azul Facebook */
+  color: white;
+}
+
+button:hover {
+  background-color: #2d4373;
+}
+
+/* Botón para avanzar al siguiente nivel */
+.boton-siguiente {
+  display: inline-block;
+  background-color: #28a745; /* Verde */
+  color: white;
+  text-decoration: none;
+}
+
+.boton-siguiente:hover {
+  background-color: #33cc33;
+}
+
+/* Mensajes de feedback */
+#feedback,
+#feedbackEjercicio,
+#mensaje {
+  margin-top: 15px;
+  font-style: italic;
+  font-weight: bold;
+  color: #008000; /* Verde oscuro */
+}
+
+/* Para errores o mensajes negativos */
+#feedback.crimson,
+#feedbackEjercicio.crimson {
+  color: crimson;
+}
+
+/* Oculta secciones hasta que se activen con JS */
+.oculto {
+  display: none;
+}
+
+/* Bloques de código (para mostrar ejemplos de Python) */
+pre {
+  background-color: #e0e0e0;
+  padding: 0.8rem 10px;
+  border-radius: 5px;
+  font-family: monospace;
+  overflow-x: auto; /* Scroll horizontal si el código es largo */
+  color: #010701;
+  margin-top: 1rem;
+}
+
+footer {
+  background-color: #000000; /* fondo negro */
+  color: #ddd; /* texto gris claro para mejor lectura */
+  text-align: center;
+  font-size: 0.9em;
+  padding: 10px 20px;
+  flex-shrink: 0; /* que el footer no se encoja */
+}
+
